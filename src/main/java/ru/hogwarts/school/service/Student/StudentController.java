@@ -1,5 +1,6 @@
 package ru.hogwarts.school.service.Student;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -70,6 +71,21 @@ public class StudentController {
             throws IOException {
         avatarService.uploadAvatar(studentId, avatar);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("getStudentCount")
+    public int getStudentCount(){
+        return studentService.getStudentCount();
+    }
+
+    @GetMapping("getAverageAge")
+    public int getAverageAge(){
+        return studentService.getAverageAge();
+    }
+
+    @GetMapping("getLastFive")
+    public List<Student> getLastFive(){
+        return studentService.getLastFive();
     }
 
 }
