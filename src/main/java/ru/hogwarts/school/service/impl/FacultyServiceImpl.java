@@ -40,11 +40,12 @@ public class FacultyServiceImpl implements FacultyService {
     public Faculty update(Long id, Faculty faculty) {
 
         return facultyRepository.findById(id).map(facultyFromDb -> {
-            facultyFromDb.setName(facultyFromDb.getName());
+            facultyFromDb.setName(faculty.getName());
             facultyFromDb.setColor(faculty.getColor());
             return facultyRepository.save(facultyFromDb);
         }).orElse(null);
     }
+
 
     @Override
     public void delete(Long id) {
@@ -70,4 +71,5 @@ public class FacultyServiceImpl implements FacultyService {
                 .map(Faculty::getStudents)
                 .orElse(null);
     }
+
 }
