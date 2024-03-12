@@ -29,4 +29,9 @@ public interface StudentService {
 
     List<Student> getLastFive();
 
+    List<String> getAllStudentsStartsWithA();
+
+    public Double getAverageAgeWithStreams();
+
+
 }
