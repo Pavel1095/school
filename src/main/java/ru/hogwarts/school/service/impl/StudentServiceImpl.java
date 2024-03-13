@@ -9,6 +9,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 import ru.hogwarts.school.service.StudentService;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -107,6 +108,7 @@ public class StudentServiceImpl implements StudentService {
                 .map(Student::getName)
                 .map(String::toUpperCase)
                 .filter(it -> it.startsWith("A"))
+                .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
     }
 
@@ -116,6 +118,16 @@ public class StudentServiceImpl implements StudentService {
                 .stream()
                 .mapToInt(Student::getAge)
                 .average().orElse(0.0);
+    }
+
+    @Override
+    public void printParallel() {
+        
+    }
+
+    @Override
+    public void printSynchronized() {
+
     }
 
 }
