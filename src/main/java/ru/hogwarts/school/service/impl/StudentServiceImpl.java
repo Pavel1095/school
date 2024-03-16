@@ -171,5 +171,11 @@ public class StudentServiceImpl implements StudentService {
         System.out.println(Thread.currentThread().getName() + ": " + name);
     }
 
+    private void printSynchronizedName1(String name) {
+        synchronized (this) {
+            System.out.println(Thread.currentThread().getName() + ": " + name);
+        }
+    }
+
 
 }
