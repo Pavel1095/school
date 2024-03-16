@@ -12,6 +12,7 @@ import ru.hogwarts.school.service.StudentService;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -152,14 +153,20 @@ public class StudentServiceImpl implements StudentService {
         printSynchronizedName (names.get(0));
         printSynchronizedName (names.get(1));
 
+        Object lock = new Object();
+
         new Thread(() -> {
-            printSynchronizedName (names.get(2));
-            printSynchronizedName (names.get(3));
+            synchronized (lock) {
+                printSynchronizedName(names.get(2));
+                printSynchronizedName(names.get(3));
+            }
         }).start();
 
         new Thread(() -> {
-            printSynchronizedName (names.get(4));
-            printSynchronizedName (names.get(5));
+            synchronized (lock) {
+                printSynchronizedName(names.get(4));
+                printSynchronizedName(names.get(5));
+            }
         }).start();
     }
 
